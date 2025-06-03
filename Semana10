@@ -1,0 +1,167 @@
+#include <iostream>
+#include <String.h>
+using namespace std;
+
+void Ejercicio01() {
+	int notas[] = { 20, 18, 20, 17, 10 };
+	string curzos[] = { "PC1", "PC2", "EP", "TF", "EF" };
+
+	notas[4] = 20;
+	for (int i = 0; i < 5; i++) {
+		cout << curzos[i] << "\t : " << notas[i] << endl;
+	}
+
+
+	int N;
+	cout << "Ingrese la catidad de curzos: "; cin >> N;
+	string curzos_favoritos[100];
+	for (int i = 0; i < N; i++) {
+		cout << "INgresa tu curzo favorito: "; cin >> curzos_favoritos[i];
+	}
+
+	cout << endl << "Tus cursos favoritos son: " << endl;
+	for (int j = N - 1; j >= 0; j--) {
+		cout << " - " << curzos_favoritos[j] << endl;
+	}
+}
+
+void Ejercicio_02() {
+	float calificaciones[5];
+	float suma_calificaciones = 0, promedio;
+
+	cout << "Digite sus calificaciones: " << endl;
+	for (int i = 0; i < 5; i++) {
+		cout << "#" << i + 1 << " : "; cin >> calificaciones[i];
+		suma_calificaciones += calificaciones[i];
+	}
+
+	promedio = suma_calificaciones / 5;
+
+	cout << "Su promedio es: " << promedio;
+}
+
+void ordenar_un_arreglo() {
+
+	float calificaciones[5];
+	float suma_calificaciones = 0, promedio;
+
+	cout << "Digite sus calificaciones: " << endl;
+	for (int i = 0; i < 5; i++) {
+		cout << "#" << i + 1 << " : "; cin >> calificaciones[i];
+		suma_calificaciones += calificaciones[i];
+	}
+
+	promedio = suma_calificaciones / 5;
+
+	cout << "Su promedio es: " << promedio << endl;
+
+	float nota_aux;
+
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (calificaciones[i] > calificaciones[j]) {
+
+				nota_aux = calificaciones[i];
+				calificaciones[i] = calificaciones[j];
+				calificaciones[j] = nota_aux;
+			}
+		}
+	}
+
+	for (int j = 0; j < 5; j++) {
+		cout << " - " << calificaciones[j] << endl;
+	}
+
+}
+
+void Ejercicio04() {
+	int notas[4] = { 20, 18, 16, 11 };
+
+	int nota_buscar, posicion;
+	bool valor_encontrado = false;
+
+
+	cout << "Ingrese la nota a buscar: ";
+	cin >> nota_buscar;
+
+	for (int i = 0; i < 4; i++) {
+		if (notas[i] == nota_buscar) {
+			valor_encontrado = true;
+			posicion = i;
+		}
+	}
+
+	if (valor_encontrado) {
+		cout << "valor encontrado en la pocision: " << posicion << endl;
+	}
+	else {
+		cout << "EL valor no se encuentra en el arreglo.";
+	}
+}
+
+void repeticion_num_arreglo() {
+	int c[5] = { 20, 18, 17, 20,12 };
+	int veces = 0;
+	for (int i = 0; i < 5; i++) {
+		if (c[i] == 20) {
+			veces++;
+		}
+	}
+
+	cout << "el 20 parece " << veces << " veces";
+}
+
+int Ejercicio05() {
+	float notas[3];
+	float suma_notas = 0, promedio;
+
+	cout << "Digite sus calificaciones: " << endl;
+	for (int i = 0; i < 3; i++) {
+		cout << "#" << i + 1 << " : "; cin >> notas[i];
+		suma_notas += notas[i];
+	}
+
+	promedio = suma_notas / 3;
+
+	if (promedio >= 10) {
+		cout << "Su promedio es: " << promedio;
+		return 0;
+	}
+
+	float nueva_nota;
+	float nota_menor = notas[0];
+	int posicion_nota_menor;
+
+	cout << "Digite una nuva nota, ya que su promedio es menor que 10, y lo queremos ayudar :) : "; cin >> nueva_nota;
+
+	for (int i = 0; i < 3; i++) {
+		if (nota_menor > notas[i]) {
+			nota_menor = notas[i];
+			posicion_nota_menor = i;
+		}
+	}
+
+	notas[posicion_nota_menor] = nueva_nota;
+
+	for (int i = 0; i < 3; i++) {
+		suma_notas += notas[i];
+	}
+	promedio = suma_notas / 3;
+
+	cout << "Su nuevo promedio es: " << promedio;
+}
+
+int main() {
+   
+	float calificaciones[5];
+	int cant_aprobados = 0;
+	for (int i = 0; i < 5; i++) {
+		cout << "Igresa la salificacion: " << i + 1 << ": ";
+		cin >> calificaciones[i];
+		if (calificaciones[i] >= 12.5) cant_aprobados++;
+	}
+
+	cout << "La cantidad de aprobados es " << cant_aprobados;
+
+	return 0;
+}
