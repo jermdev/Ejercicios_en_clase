@@ -1,0 +1,117 @@
+#include <iostream>
+
+#define COLUMNAS 5
+#define FILAS 6
+
+using namespace std;
+
+static void generar(int A[FILAS][COLUMNAS]) {
+	srand(time(NULL)); // generar la semalla aleatoria 
+
+	for (int i = 0; i < FILAS; i++) { // recorro de las  filas
+		for (int j = 0; j < COLUMNAS; j++) // recorrer las columnas 
+		{
+			A[i][j] = 1 + rand() % 9; // asignar un valor
+		}
+	}
+}
+
+static void Imprimir(int A[FILAS][COLUMNAS]) {
+
+	for (int i = 0; i < FILAS; i++) { // recorro de las  filas
+		for (int j = 0; j < COLUMNAS; j++) // recorrer las columnas 
+		{
+			cout << A[i][j] << " "; // imprimir el valor
+		}
+		cout << endl; // salto de linea
+	}
+}
+
+static void Imprimir02(int A[FILAS][COLUMNAS]) {
+
+	for (int i = 0; i < FILAS; i++) { // recorro de las  filas
+		for (int j = 0; j < COLUMNAS; j++) // recorrer las columnas 
+		{
+			if (A[i][j] == 7) {
+				cout << "# ";
+			}
+			else {
+				cout << "- ";
+			}
+
+		}
+		cout << endl; // salto de linea
+	}
+}
+
+static int Recurrencia_del_valor(int A[FILAS][COLUMNAS], int valor_busqueda) {
+
+	int count = 0;
+
+	for (int i = 0; i < FILAS; i++) {
+		for (int j = 0; j < COLUMNAS; j++) {
+			if (A[i][j] == valor_busqueda) count++;
+		}
+	}
+
+	return count;
+}
+
+static int Mayor(int A[FILAS][COLUMNAS]) {
+	int mayor = A[0][0];
+
+	for (int i = 0; i < FILAS; i++) {
+		for (int j = 0; j < COLUMNAS; j++) {
+			if (A[i][j] > mayor) mayor = A[i][j];
+		}
+	}
+
+	return mayor;
+}
+
+static int Frecuencia(int A[FILAS][COLUMNAS]) {
+
+	int arr_num[] = {1,2,3,4,5,6,7,8,9};
+	int num_mayor_recurrencia = arr_num[0];
+	int recurrencia_mayor = 0;
+
+	for (int i = 0; i < sizeof(arr_num); i++) {
+		int recurrencia_i = Recurrencia_del_valor(A, arr_num[i]);
+		if (recurrencia_mayor < recurrencia_i) {
+			recurrencia_mayor = recurrencia_i;
+			num_mayor_recurrencia = arr_num[i];
+		}
+	}
+
+	return num_mayor_recurrencia;
+}
+
+int main() {
+
+	system("color 4");
+
+	int M[FILAS][COLUMNAS], numero_mayor=0; // Crear un arreglo 2D
+
+	//int valor_del_usuario, num_repeticiones;
+	//int num_repeticiones;
+
+	//cout << "digite su valo de busqueda : "; cin >> valor_del_usuario;
+
+	cout << endl;
+	generar(M); // generar
+
+	Imprimir(M); // Imprimir
+	int Numero_mayor_frecuencias = Frecuencia(M);
+	cout << endl << "EL numero que mas se repite: " << Numero_mayor_frecuencias;
+	//numero_mayor = Mayor(M);
+
+	//cout << "EL numero mayor es: " << Mayor(M);
+	
+	//Recurrencia_del_valor(M, 7);
+
+	//num_repeticiones = Recurrencia_del_valor(M, 7);
+
+	//cout << "El numero " << 7 << " tiene un recurrencia en el arreglo Bidimencional de " <<  num_repeticiones << " veces." << endl;
+
+	return 120;
+}
