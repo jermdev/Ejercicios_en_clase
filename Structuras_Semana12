@@ -10,6 +10,14 @@ using namespace std;
     int edad;
 };
 
+struct estudiante {
+    string nombre;
+    int edad;
+    bool poder_votar() {
+        return edad >= 18;
+    }
+};
+
 struct { // solo puede haver un objeto con esta forma 
     string nambre;
     string apellido;
