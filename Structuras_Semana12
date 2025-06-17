@@ -1,0 +1,130 @@
+
+#include <iostream>
+#include "string.h"
+
+using namespace std;
+
+/*struct Persona { // COSTO DE MUCHA MEMORIA
+    string nambre;
+    string apellido;
+    int edad;
+};
+
+struct { // solo puede haver un objeto con esta forma 
+    string nambre;
+    string apellido;
+    int edad;
+}p; // EL objeto es 'p' // optimo a nivel de memoria*/
+
+struct fecha {
+    int dia, mes, año;
+};
+
+struct anime {
+    string nombre;
+    long long cant_capitulos;
+};
+
+//struct persona {
+//    string nombre;
+//    fecha fecha_nacimiento;
+//    anime anime_favorito;
+//};
+
+
+struct persona {
+    string nombre;
+    int edad;
+    char genero_favorito;
+};
+
+
+//void animes() {
+//
+//    fecha f;
+//    anime a;
+//
+//    persona e[3];
+//
+//    for (int i = 0; i < 3; i++) {
+//        cout << "#" << i + 1 << endl;
+//        cout << "Ingrese su nombre: "; cin >> e[i].nombre;
+//        cout << "***Ingrese su fecha de nacimiento***";
+//        cout << "\nDia: "; cin >> f.dia;
+//        cout << "Mes: "; cin >> f.mes;
+//        cout << "Anio: "; cin >> f.año;
+//
+//
+//        cout << "****Ingrese su anime favorito****" << endl;
+//        cout << "Nombre del anime: "; cin >> a.nombre;
+//        cout << "Ingrese la cantidad de capitulos: "; cin >> a.cant_capitulos;
+//
+//        e[i].fecha_nacimiento = f;
+//        e[i].anime_favorito = a;
+//
+//    }
+//
+//
+//
+//
+//
+//    for (int i = 0; i < 3; i++) {
+//        cout << "\n________________________" << endl;
+//        cout << "Nombre: \t" << e[i].nombre << endl;
+//        cout << "Fecha de nacimiento: \t";
+//        cout << e[i].fecha_nacimiento.dia << "/" << e[i].fecha_nacimiento.mes << "/" << e[i].fecha_nacimiento.año;
+//        cout << "\nAnime favorito: " << e[i].anime_favorito.nombre;
+//
+//        if (e[i].anime_favorito.cant_capitulos > 100) {
+//            cout << " Tiene mas de 100 capitulos";
+//        }
+//    }
+//}
+
+bool valor_pertenece(int leng, char arr[], char valu) {
+    for (int i = 0; i < leng; i++) {
+        if (arr[i] == valu) {
+            return true;
+        }
+    }
+    return false;
+}
+int main() {
+    system("color 2");
+  
+    char g[] = { 's', 'r', 'c', 'o' };
+    persona p[5];
+
+    for (int i = 0; i < 5; i++) {
+        cout << "#" << i + 1 << endl;
+        cout << "INgrese su nombre: ";  cin >> p[i].nombre;
+        cout << "Ingrese su edad: "; cin >> p[i].edad;
+        cout << "INgrese su genero musical favorito, con un caracter: " << endl;
+
+        do {
+            cout << "Salsa : s" << endl << "Raggeton : r" << endl << "Cumbia : c" << endl << "Otros : o" << endl;
+            cin >> p[i].genero_favorito;
+        } while (!(valor_pertenece(4, g, p[i].genero_favorito)));
+
+    }
+
+    for (int i = 0; i < 4; i++) {
+        float promedio = 0, count_p_gustomusical = 0;
+
+        for (int j = 0; j < 5; j++) {
+            if (p[j].genero_favorito == g[i]) {
+                promedio += p[j].edad;
+                count_p_gustomusical++;
+            }
+
+        }
+        if (count_p_gustomusical == 0) count_p_gustomusical = 1;
+        promedio /= count_p_gustomusical;
+        cout << "\nPara el gusto musical: " << g[i] << " Su promedio es: " << promedio;
+    }
+
+
+  
+
+   
+}
