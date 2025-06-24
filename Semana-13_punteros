@@ -1,0 +1,46 @@
+#include <iostream>
+#include "string"
+
+using namespace std;
+
+float promedio(int* edades, int cant) {
+	float p = 0;
+	for (int i = 0; i < cant; i++) {
+		cout << "Ingrese la edad " << i + 1 << ": "; cin >> edades[i];
+		// hallar promedio 
+		p += edades[i];
+	}
+	return p / cant;
+}
+
+void modificar_soles(int v) {
+	v = 50;
+}
+
+void modificar_soles02(int* v) {
+	*v = 50;
+}
+
+int main() {
+	string* nombre = new string;
+	string* apellido = new string;
+	int* edad = new int;
+	string* codigo_de_alumno = new string;
+
+	cout << "Dijite su nombre: "; cin >> *nombre;
+	cout << "Dijite su apellido: "; cin >> *apellido;
+	cout << "Dijite su edad: "; cin >> *edad;
+	cout << "Dijite su codigo de alumno: "; cin >> *codigo_de_alumno;
+	
+	cout << "\n****************************************" << endl;
+
+	cout << "la direccion de su nombre es: " << nombre << endl;
+	cout << "la direccion de su apellido es: " << apellido << endl;
+	cout << "la direccion de su edad es : " << edad << endl;
+	cout << "la direccion de su codigo de alumno es: " << codigo_de_alumno;
+
+	delete nombre, apellido, edad, codigo_de_alumno;
+
+	return 0;
+
+}
